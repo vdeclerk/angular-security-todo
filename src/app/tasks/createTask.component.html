@@ -1,0 +1,37 @@
+<div id="createTaskModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create task</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="titleBox">Title</label>
+              <input formControlName="title" type="text" class="form-control" id="titleBox" placeholder="A short name for your task." required>
+            </div>
+            <div class="form-group">
+              <label for="descriptionBox">Description</label>
+              <textarea formControlName="description" class="form-control" id="descriptionBox" placeholder="Describe the task you must complete." rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="expiryDate">Expiry date</label>
+              <div class="input-group date" data-provide="datepicker">              
+                <input formControlName="expiryDate" type="date" class="form-control" id="expiryDate" required>
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button [disabled]="createTaskForm.invalid" type="submit" class="btn btn-primary">Create</button>
+          <button #cancelBtn type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
