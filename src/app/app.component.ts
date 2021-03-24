@@ -34,6 +34,28 @@ export class AppComponent implements OnInit {
     );
   }
 
+  public onWeek() {
+    this.taskService.getNextWeekTasks().subscribe(
+      (response: Task[]) => {
+        this.tasks = response;
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onMonth() {
+    this.taskService.getNextMonthTasks().subscribe(
+      (response: Task[]) => {
+        this.tasks = response;
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
+  }  
+
   public onCreateTask(createForm: NgForm): void {
     let task = createForm.value;
     task.creationDate = new Date();
@@ -74,18 +96,7 @@ export class AppComponent implements OnInit {
       }
     );
   }
-/*
-   get progress(): number {
-    if(task.expiryDate) {
-      let now = new Date().getTime();
-      let expiry = task.expiryDate as Date; 
-      return (expiry.getTime() - task.creationDate.getTime()) /
-             (now - task.creationDate.getTime());
-    } else {
-      return 0;
-    }
-  }
-*/
+
   public openModal(task: Task | null, mode: string) {
     const container = document.getElementById("mainContainer");
     const button = document.createElement('button');

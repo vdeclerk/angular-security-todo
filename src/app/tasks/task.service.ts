@@ -17,6 +17,14 @@ export class TaskService {
     return this.http.get<Task[]>(`${this.apiServerUrl}/task`);
   }
 
+  public getNextWeekTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiServerUrl}/task/week`);
+  }
+
+  public getNextMonthTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.apiServerUrl}/task/month`);
+  }
+
   public addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(`${this.apiServerUrl}/task`, task);
   }
