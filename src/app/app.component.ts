@@ -79,22 +79,26 @@ export class AppComponent implements OnInit {
 
   public onDeleteTask(taskId: number | null) {
     if(taskId === null) return;
-    this.taskService.deleteTask(taskId).subscribe(
-      (reaponse: void) => { this.getTasks(); },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    if(confirm("Are you sure to delete the task")) { 
+      this.taskService.deleteTask(taskId).subscribe(
+        (reaponse: void) => { this.getTasks(); },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+    }
   }
 
   public onCompleteTask(task: Task) {
-    task.done = true;
-    this.taskService.saveTask(task).subscribe(
-      (reaponse: void) => { this.getTasks(); },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    if(confirm("Are you sure to mark as completed")) {
+      task.done = true;
+      this.taskService.saveTask(task).subscribe(
+        (reaponse: void) => { this.getTasks(); },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
+    }
   }
 
   public openModal(task: Task | null, mode: string) {
@@ -109,9 +113,6 @@ export class AppComponent implements OnInit {
     if(mode === 'edit') {
       if(task) this.editor.loadTask(task);
       button.setAttribute('data-target', '#editTaskModal');
-    }
-    if(mode === 'delete') {
-      button.setAttribute('data-target', '#deleteTaskModal');
     }
     container?.appendChild(button);
     button.click();
