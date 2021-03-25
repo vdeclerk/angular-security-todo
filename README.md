@@ -1,6 +1,6 @@
 # TodoAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.  
 It uses [spring-boot-todo](https://github.com/vdeclerk/spring-boot-todo) REST API
 
 ## Development server
