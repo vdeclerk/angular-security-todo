@@ -2200,3 +2200,8 @@ body{
       text-align: center;
       margin-bottom: 2.85rem
   }
+
+  .form-check-inline {
+    width: 150px;
+    margin-left: 10%;
+  }
